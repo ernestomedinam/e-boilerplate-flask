@@ -1,0 +1,12 @@
+1. install pipenv python3.7 python3.7-dev pkg-config
+2. create pipenv: $ pipenv --python 3.7
+3. install flask: $ pipenv install Flask Flask-DotEnv pytest
+4. create folders src, config, tests
+5. create __init__.py for src app
+6. create settings.py file for src app
+7. create .env file in / folder
+8. create config.py in config folder
+9. create run.py
+10. create conftest.py
+11. write tests for config and hello endpoint
+

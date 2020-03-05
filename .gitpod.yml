@@ -2,9 +2,9 @@ image:
     file: .gitpod.dockerfile
 ports:
     - port: 3000
-        onOpen: ignore
+      onOpen: ignore
     - port: 3306
-        onOpen: ignore
+      onOpen: ignore
 tasks:
     - init: >
         cp .env.example .env;
@@ -13,5 +13,5 @@ tasks:
         pipenv run init;
         pipenv run migrate;
         pipenv run upgrade;
-    command: >
+      command: >
         pipenv run start;

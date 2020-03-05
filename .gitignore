@@ -354,3 +354,14 @@ MigrationBackup/
 
 # .env files
 .env
+venv
+venv/
+.venv/
+.venv
+
+.theia/
+
+database.database
+database.db
+public/*
+dist/*

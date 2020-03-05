@@ -354,3 +354,5 @@ MigrationBackup/
 
 # .env files
 .env
+migrations
+migrations/

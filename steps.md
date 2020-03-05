@@ -14,3 +14,9 @@
 12. create **api** folder in **app_name** folder
 13. create `__init__py` and `routes.py` in **api** folder
 14. write tests for api in `test_api.py` in **tests** folder
+15. install db related: `$ pipenv install sqlalchemy flask-sqlalchemy mysqlclient psycopg2-binary mysql-connector-python flask-migrate`
+16. create `db.py` in **app_name** folder
+17. create `user`, or use `root`, and create database on mysql
+18. update `DB_CONNECTION_STRING` on `.env` file next to **app_name** folder
+19. update `__init__.py` in **app_name** folder to add flask-migrate import and `migrate = Migrate(app, db)` line
+20. add gitpod support files, `.gitpod.dockerfile` and `.gitpod.yml`

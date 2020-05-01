@@ -42,7 +42,10 @@ class Mock(ModelBase):
         for key in required_keys:
             if key in input_data:
                 # check input_data[key] is same type as self.key prop
-                if isinstance(input_data[key], type(getattr(standard_mock, key))):
+                if (
+                    isinstance(input_data[key], type(getattr(standard_mock, key))) and
+                    input_data[key]
+                ):
                     attr = input_data.pop(key)
                     validated_data[key] = attr.strip() if isinstance(
                         attr, str

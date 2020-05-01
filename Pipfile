@@ -15,6 +15,7 @@ mysqlclient = "*"
 psycopg2-binary = "*"
 mysql-connector-python = "*"
 flask-migrate = "*"
+pytest-flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"

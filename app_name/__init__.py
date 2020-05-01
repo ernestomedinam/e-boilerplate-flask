@@ -1,10 +1,10 @@
 import os
 import json
 from flask import Flask, make_response
-from flask_migrate import Migrate
 from config import app_config
 from app_name.api.routes import api_mod
-from app_name.db import db 
+from app_name.db import db, migrate
+from app_name.mock.routes import mock_module
 
 def create_app(config_name="development"):
     """ create and configure flask app """
@@ -22,11 +22,14 @@ def create_app(config_name="development"):
 
     # register blueprints
     app.register_blueprint(api_mod, url_prefix="/api")
+    app.register_blueprint(mock_module, url_prefix="/api")
 
-    # init db instance
-    db.init_app(app)
+    with app.app_context():
+        if config_name != "testing":
+            # init db instance
+            db.init_app(app)
 
-    # migrate  for Flask-Migrate
-    migrate = Migrate(app, db)
+            # migrate  for Flask-Migrate
+            migrate.init_app(app, db)
 
-    return app
+        return app

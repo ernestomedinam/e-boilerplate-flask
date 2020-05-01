@@ -3,28 +3,28 @@ import os
 from flask_dotenv import DotEnv
 
 class BaseConfig(object):
-    ENV = "development"
-    DEBUG = True
 
     @classmethod
-    def init_app(self, app):
+    def init_app(cls, app):
         env = DotEnv()
         path = os.getcwd().replace("config", "")
         env.init_app(app, env_file=os.path.join(path, ".env"), verbose_mode=True)
 
         # update database uri
-        prefix = self.__name__.replace("Config", "").upper()
+        prefix = cls.__name__.replace("Config", "").upper()
         env.alias(maps={
             prefix + "_CONNECTION_STRING": "SQLALCHEMY_DATABASE_URI"
         })
 
 class DevelopmentConfig(BaseConfig):
-    MY_DEV_VARIABLE = "Cojones!"
-    DEVELOPMENT_CONNECTION_STRING = os.environ.get("DEVELOPMENT_CONNECTION_STRING")
+    ENV = "development"
+    DEBUG = True
+    MY_DEV_VARIABLE = "Any value!"
 
 class TestConfig(BaseConfig):
+    ENV = "development"
+    DEBUG = True
     TESTING = True
-    TEST_CONNECTION_STRING = "sqlite:///:memory:"
 
 config = {
     "development": DevelopmentConfig,

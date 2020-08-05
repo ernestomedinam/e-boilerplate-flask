@@ -11,12 +11,9 @@ def app():
         yield app
 
 # required fixtures for pytest-flask-sqlalchemy
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def _db(app):
     with app.app_context():
-        # start app and db for app as new empty db for session
-        db.init_app(app)
-        migrate.init_app(app, db)
         db.drop_all()
         db.create_all()
     

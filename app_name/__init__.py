@@ -5,6 +5,7 @@ from config import app_config
 from app_name.api.routes import api_mod
 from app_name.db import db, migrate
 from app_name.mock.routes import mock_module
+from app_name.support_ticket.routes import support_ticket_module
 
 def create_app(config_name="development"):
     """ create and configure flask app """
@@ -23,13 +24,14 @@ def create_app(config_name="development"):
     # register blueprints
     app.register_blueprint(api_mod, url_prefix="/api")
     app.register_blueprint(mock_module, url_prefix="/api")
+    app.register_blueprint(support_ticket_module, url_prefix="/api")
 
     with app.app_context():
-        if config_name != "testing":
-            # init db instance
-            db.init_app(app)
+        # if config_name != "testing":
+        # init db instance
+        db.init_app(app)
 
-            # migrate  for Flask-Migrate
-            migrate.init_app(app, db)
+        # migrate  for Flask-Migrate
+        migrate.init_app(app, db)
 
         return app

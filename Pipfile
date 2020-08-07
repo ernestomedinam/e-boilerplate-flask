@@ -16,6 +16,7 @@ psycopg2-binary = "*"
 mysql-connector-python = "*"
 flask-migrate = "*"
 pytest-flask-sqlalchemy = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"

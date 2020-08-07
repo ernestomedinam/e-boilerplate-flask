@@ -34,7 +34,7 @@ def handle_support_tickets(ticket_id = None):
                 new_ticket = BasicSupportTicket.create(input_data.pop("nametag"))
                 if isinstance(new_ticket, BasicSupportTicket):
                     response["text"] = new_ticket.serialize()
-                    response["status_text"] = 201
+                    response["status_code"] = 201
                 else:
                     response = new_ticket
             else:
@@ -42,7 +42,8 @@ def handle_support_tickets(ticket_id = None):
                 response["status_code"] = 400
         elif request.method == "PUT":
             ticket = BasicSupportTicket.query.filter_by(
-                id=ticket_id
+                id=ticket_id,
+                status="open"
             ).one_or_none()
             if ticket is not None:
                 closed = ticket.close()

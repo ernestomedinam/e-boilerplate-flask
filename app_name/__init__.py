@@ -1,6 +1,7 @@
 import os
 import json
 from flask import Flask, make_response
+from flask_cors import CORS
 from config import app_config
 from app_name.api.routes import api_mod
 from app_name.db import db, migrate
@@ -25,6 +26,9 @@ def create_app(config_name="development"):
     app.register_blueprint(api_mod, url_prefix="/api")
     app.register_blueprint(mock_module, url_prefix="/api")
     app.register_blueprint(support_ticket_module, url_prefix="/api")
+    
+    # enable cors
+    CORS(app)
 
     with app.app_context():
         # if config_name != "testing":

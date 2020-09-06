@@ -23,7 +23,7 @@ python_version = "3.7"
 
 [scripts]
 start = "python run.py"
-test = "pytest -v"
+test = "pytest"
 init = "flask db init"
 migrate = "flask db migrate"
 upgrade = "flask db upgrade"

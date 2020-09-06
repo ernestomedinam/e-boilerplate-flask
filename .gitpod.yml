@@ -6,7 +6,16 @@ ports:
     - port: 3306
       onOpen: ignore
 tasks:
-    - init: >
+    - name: git terminal
+      command: |
+        gp await-port 3000
+        git status
+    - name: mysql
+      command:
+        mysql
+      openMode: tab-after
+    - name: dev server
+      init: >
         cp .env.example .env;
         pipenv install;
         mysql -u root -e "CREATE DATABASE app_name";
@@ -15,3 +24,4 @@ tasks:
         pipenv run upgrade;
       command: >
         pipenv run start;
+      openMode: tab-after

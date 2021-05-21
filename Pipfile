@@ -4,26 +4,29 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+pytest-flask-sqlalchemy = "*"
+pytest-mock= "*"
 
 [packages]
 flask = "*"
-flask-dotenv = "*"
-pytest = "*"
-sqlalchemy = "*"
-flask-sqlalchemy = "*"
-mysqlclient = "*"
-psycopg2-binary = "*"
-mysql-connector-python = "*"
-flask-migrate = "*"
-pytest-flask-sqlalchemy = "*"
+flask-apispec = "*"
 flask-cors = "*"
+flask-dotenv = "*"
+flask-jwt-extended = "*"
+flask-migrate = "*"
+flask-restful = "*"
+flask-sqlalchemy = "*"
+psycopg2-binary = "*"
+requests = "*"
+sqlalchemy = "==1.3.23"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [scripts]
 start = "python run.py"
-test = "pytest"
 init = "flask db init"
 migrate = "flask db migrate"
 upgrade = "flask db upgrade"
+test = "pytest -v"

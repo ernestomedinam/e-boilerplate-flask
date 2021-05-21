@@ -10,12 +10,6 @@ class BaseConfig(object):
         path = os.getcwd().replace("config", "")
         env.init_app(app, env_file=os.path.join(path, ".env"), verbose_mode=True)
 
-        # update database uri
-        prefix = cls.__name__.replace("Config", "").upper()
-        env.alias(maps={
-            prefix + "_CONNECTION_STRING": "SQLALCHEMY_DATABASE_URI"
-        })
-
 class DevelopmentConfig(BaseConfig):
     ENV = "development"
     DEBUG = True
@@ -28,7 +22,6 @@ class TestConfig(BaseConfig):
 
 config = {
     "development": DevelopmentConfig,
-    "testing": TestConfig,
+    "test": TestConfig,
     "production": BaseConfig
 }
-
